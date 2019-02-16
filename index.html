@@ -1,0 +1,740 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Generic CSS</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- GeneriCss -->
+    <link rel="stylesheet" href="css/documentation.css">
+
+</head>
+
+<body>
+
+
+<div class="page">
+    <header class="header">
+        <div class="is-navbar-container">
+            <div class="is-navbar">
+                <nav class="is-center is-text-center">
+                    <h1>Grid Css</h1>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main is-container">
+        <div class="main-sidebar">
+            <nav>
+                <a href="#alert">Alert</a>
+                <a href="#button">Button</a>
+                <a href="#breadcrumb">Breadcrumb</a>
+                <a href="#label">Label</a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <div id="alert" class="is-content is-article">
+                <h1>Alert</h1>
+
+                <p class="lead">
+                    Take a div, give it an alert class, add a color using meaningful classes like <code>is-error</code>
+                    or
+                    <code>is-success</code>
+                    and you're practically done!
+                </p>
+
+                <!-- USAGE -->
+                <h2 id="s-usage"><a href="#s-usage">Usage <span>#</span></a></h2>
+                <p>The default alert is just a styled block with a message, without interactivity.</p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <div class="alert">
+                            You have 2 modules waiting for installation. <a href="#install">Install</a>
+                        </div>
+                    </div>
+                    <pre>&lt;div class="alert"&gt;...&lt;/div&gt;</pre>
+                </div>
+                <hr>
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <!-- ALERT INIT -->
+                        <div class="alert">
+                            <p>You have 2 modules waiting for installation. <a href="#install">Install</a></p>
+                            <span class="close"></span>
+                        </div>
+                    </div>
+                    <pre>&lt;div class="alert"&gt;
+    You have 2 modules waiting for installation.
+    <b>&lt;span class="close is-small"&gt;&lt;/span&gt;</b>
+&lt;/div&gt;</pre>
+                </div>
+                <hr>
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <div class="alert is-error">
+                            You have 2 modules waiting for installation. <a href="">Install</a>
+                        </div>
+                    </div>
+                    <pre>&lt;div class="alert is-error"&gt;...&lt;/div&gt;</pre>
+                </div>
+                <hr>
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <div class="alert is-success">
+                            You have 2 modules waiting for installation. <a href="">Install</a>
+                        </div>
+                    </div>
+                    <pre>&lt;div class="alert is-success"&gt;...&lt;/div&gt;</pre>
+                </div>
+                <hr>
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <div class="alert is-focus">
+                            You have 2 modules waiting for installation. <a href="">Install</a>
+                        </div>
+                    </div>
+                    <pre>&lt;div class="alert is-focus"&gt;...&lt;/div&gt;</pre>
+                </div>
+                <hr>
+                <div class="demo-box">
+                    <div class="demo-example demo-inverted-box">
+                        <div class="alert is-inverted" style="background: black;">
+                            You have 2 modules waiting for installation. <a href="">Install</a>
+                        </div>
+                    </div>
+                    <pre>&lt;div class="alert is-inverted"&gt;...&lt;/div&gt;</pre>
+                </div>
+            </div>
+            <div id="button" class="is-content is-article">
+                <h1>Button</h1>
+
+                <p class="lead">
+                    Buttons in Kube are minimalistic, designed for instant and convenient customization, and are ready
+                    to be pushed, pressed, clicked and manipulated in whichever ways. A lot of interactive components
+                    use buttons, and you should too.
+                </p>
+
+
+                <ul class="navigation-contents is-columns">
+
+                    <li>
+                        <a href="#s-default">Default</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-secondary">Secondary</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-tertiary">Tertiary</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-small">Small</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-big">Big</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-disabled">Disabled</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-size">Size</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-inverted">Inverted</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-width">Width</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-icons">Icons</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-caret">Caret</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-loading">Loading</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-custom">Custom</a>
+                    </li>
+
+                </ul>
+
+
+                <!-- DEFAULT -->
+                <h2 id="s-default"><a href="#s-default">Default <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button">Button</button>
+                        &nbsp;
+                        <a href="#" class="button">Button</a>
+                    </div>
+                    <pre>&lt;button class="button"&gt;Button&lt;/button&gt;
+&lt;a href="#" class="button"&gt;Button&lt;/a&gt;
+</pre>
+                </div>
+
+                <!-- SECONDARY -->
+                <h2 id="s-secondary"><a href="#s-secondary">Secondary <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button is-secondary">Button</button>
+                        &nbsp;
+                        <a href="#" class="button is-secondary">Button</a>
+                    </div>
+                    <pre>&lt;button class="button is-secondary"&gt;Button&lt;/button&gt;
+&lt;a href="#" class="button is-secondary"&gt;Button&lt;/a&gt;
+</pre>
+                </div>
+
+                <!-- TERTIARY -->
+                <h2 id="s-tertiary"><a href="#s-tertiary">Tertiary <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button is-tertiary">Button</button>
+                        &nbsp;&nbsp;
+                        <a href="#" class="button is-tertiary">Button</a>
+                    </div>
+                    <pre>&lt;button class="button is-tertiary"&gt;Button&lt;/button&gt;
+&lt;a href="#" class="button is-tertiary"&gt;Button&lt;/a&gt;
+</pre>
+                </div>
+
+
+                <!-- SMALL -->
+                <h2 id="s-small"><a href="#s-small">Small <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button is-small">Button</button>
+                        &nbsp;
+                        <button class="button is-secondary is-small">Button</button>
+                        &nbsp;
+                        <button class="button is-tertiary is-small">Button</button>
+                    </div>
+                    <pre>&lt;button class="button is-small"&gt;Button&lt;/button&gt;
+&lt;button class="button is-secondary is-small"&gt;Button&lt;/button&gt;
+&lt;button class="button is-tertiary is-small"&gt;Button&lt;/button&gt;
+</pre>
+                </div>
+
+                <!-- BIG -->
+                <h2 id="s-big"><a href="#s-big">Big <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button is-big">Button</button>
+                        &nbsp;
+                        <button class="button is-secondary is-big">Button</button>
+                        &nbsp;
+                        <button class="button is-tertiary is-big">Button</button>
+                    </div>
+                    <pre>&lt;button class="button is-big"&gt;Button&lt;/button&gt;
+&lt;button class="button is-secondary is-big"&gt;Button&lt;/button&gt;
+&lt;button class="button is-tertiary is-big"&gt;Button&lt;/button&gt;
+</pre>
+                </div>
+
+
+                <!-- DISABLED -->
+                <h2 id="s-disabled"><a href="#s-disabled">Disabled <span>#</span></a></h2>
+                <p>Disabled buttons are automatically styles with muted colors, inactive and not clickable. As you can
+                    see, there's no need to set disabled class for the button element, and disabled argument is enough.
+                    Having this said, both a link and a button input require disabled class.</p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button" disabled="">Button</button> &nbsp;
+                        <button class="button is-disabled">Button</button> &nbsp;
+                        <button class="button is-secondary" disabled="">Button</button> &nbsp;&nbsp;
+                        <button class="button is-tertiary" disabled="">Button</button>
+                    </div>
+                    <pre>&lt;button class="button" disabled&gt;Button&lt;/button&gt;
+&lt;button class="button is-disabled"&gt;Button&lt;/button&gt;
+&lt;button class="button is-secondary" disabled&gt;Button&lt;/button&gt;
+&lt;button class="button is-tertiary" disabled&gt;Button&lt;/button&gt;
+</pre>
+                </div>
+
+
+                <!-- SIZE -->
+                <h2 id="s-size"><a href="#s-size">Size <span>#</span></a></h2>
+
+                <p>Just increase or decrease the font size for your button to make it bigger or smaller.</p>
+
+                <div class="demo-box">
+                    <div class="demo-example demo-example-top-align">
+                        <a href="#" class="button demo-button-action-big" role="button">Button</a>
+                        &nbsp;
+                        <button class="button is-secondary demo-button-action-small">Button</button>
+                    </div>
+                    <pre class="code">// css
+.button-action-big {
+    font-size: 20px;
+}
+.button-action-small {
+    font-size: 13px;
+}
+// html
+&lt;a href="#" class="button button-action-big" role="button"&gt;Button&lt;/a&gt;
+&lt;button class="button is-secondary button-action-small"&gt;Button&lt;/button&gt;
+</pre>
+                </div>
+
+
+                <!-- INVERTED -->
+                <h2 id="s-inverted"><a href="#s-inverted">Inverted <span>#</span></a></h2>
+                <p>For use on darker backgrounds, you can just introduce inverted class to have your button flip its
+                    color to the opposite one.</p>
+
+                <div class="demo-box">
+                    <div class="demo-example demo-inverted-box">
+                        <p>
+                            <a href="#" class="button is-inverted" role="button">Button</a> &nbsp;
+                            <button class="button is-inverted is-secondary">Button</button> &nbsp;&nbsp;
+                            <button class="button is-inverted is-tertiary">Button</button>
+                        </p>
+                        <br>
+                        <p class="is-outset-none">
+                            <button class="button is-inverted" disabled="">Disabled</button> &nbsp;
+                            <button class="button is-inverted is-secondary" disabled="">Disabled</button> &nbsp;&nbsp;
+                            <button class="button is-inverted is-tertiary" disabled="">Disabled</button>
+                        </p>
+                    </div>
+                    <pre>&lt;a href="#" class="button is-inverted" role="button"&gt;Button&lt;/a&gt;
+&lt;button class="button is-inverted is-secondary"&gt;Button&lt;/button&gt;
+&lt;button class="button is-inverted is-tertiary"&gt;Button&lt;/button&gt;
+
+&lt;button class="button is-inverted" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="button is-inverted is-secondary" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="button is-inverted is-tertiary" disabled&gt;Disabled&lt;/button&gt;
+</pre>
+                </div>
+
+                <!-- WIDTH -->
+                <h2 id="s-width"><a href="#s-width">Width <span>#</span></a></h2>
+
+                <p>Following <a href="/kube/docs/modules/helpers/#s-width">framework-wide rules</a>, it is very easy to
+                    manipulate button width sizes.
+                    Just use <code>is-100</code> class to make a button 100% wide or <code>is-50</code> to a 50% wide.
+                </p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <p>
+                            <button class="button is-100">Button 100%</button>
+                        </p>
+                        <p>
+                            <button class="button is-secondary is-50">Button 50%</button>
+                        </p>
+                    </div>
+                    <pre>&lt;button class="button is-100"&gt;...&lt;/button&gt;
+&lt;button class="button is-secondary is-50"&gt;...&lt;/button&gt;
+</pre>
+                </div>
+
+                <!-- ICONS -->
+                <h2 id="s-icons"><a href="#s-icons">Icons <span>#</span></a></h2>
+
+                <p>In the buttons, you can use <a href="/kube/docs/modules/helpers/#s-icons">predefined Kube's icons</a>
+                    or any other icons from your favorite set, to give the buttons more meaning.</p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button is-icon"><span class="icon-kube-calendar"></span></button> &nbsp;
+                        <button class="button is-icon"><span class="icon-kube-calendar"></span> Change</button> &nbsp;
+                        <button class="button is-secondary is-icon"><span class="icon-kube-search"></span></button>
+                        &nbsp;
+                        <button class="button is-secondary is-icon"><span class="icon-kube-search"></span> Search
+                        </button>
+                    </div>
+                    <pre>&lt;button class="button is-icon"&gt;&lt;span class="icon-kube-calendar"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;button class="button is-icon"&gt;&lt;span class="icon-kube-calendar"&gt;&lt;/span&gt; Change&lt;/button&gt;
+&lt;button class="button is-secondary is-icon"&gt;&lt;span class="icon-kube-search"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;button class="button is-secondary is-icon"&gt;&lt;span class="icon-kube-search"&gt;&lt;/span&gt; Search&lt;/button&gt;
+</pre>
+                </div>
+
+                <!-- CARET -->
+                <h2 id="s-caret"><a href="#s-caret">Caret <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button">Button<span class="caret is-down"></span></button> &nbsp;
+                        <button class="button is-secondary">Button<span class="caret is-down"></span></button> &nbsp;&nbsp;
+                        <button class="button is-tertiary">Button<span class="caret is-down"></span></button>
+                    </div>
+                    <pre>&lt;button class="button"&gt;Button &lt;span class="caret is-down"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;button class="button is-secondary"&gt;Button &lt;span class="caret is-down"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;button class="button is-tertiary"&gt;Button &lt;span class="caret is-down"&gt;&lt;/span&gt;&lt;/button&gt;
+</pre>
+                </div>
+
+                <!-- LOADING -->
+                <h2 id="s-loading"><a href="#s-loading">Loading <span>#</span></a></h2>
+
+                <p>Add the <code>loading</code> class to your button to show the progress state.</p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button is-loading"></button>
+                        &nbsp;
+                        <button class="button is-loading">Loading</button>
+                        &nbsp;
+                        <button class="button is-secondary is-loading">Loading</button>
+                        &nbsp;
+                        <button class="button is-tertiary is-loading">Loading</button>
+                    </div>
+                    <pre>&lt;button class="button is-loading"&gt;&lt;/button&gt;
+&lt;button class="button is-loading"&gt;Loading&lt;/button&gt;
+&lt;button class="button is-secondary is-loading"&gt;Loading&lt;/button&gt;
+&lt;button class="button is-tertiary is-loading"&gt;Loading&lt;/button
+</pre>
+                </div>
+
+                <!-- CUSTOM -->
+                <h2 id="s-custom"><a href="#s-custom">Custom <span>#</span></a></h2>
+                <p>With some Sass magic, you can customize your buttons in a snap. Just include a color class
+                    declaration and set the color itself, and you're done.</p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <button class="button is-destructive">Button</button> &nbsp;
+                        <button class="button is-destructive is-secondary">Button</button> &nbsp;&nbsp;
+                        <button class="button is-destructive is-tertiary">Button</button>
+                    </div>
+                    <pre>// HTML
+&lt;button class="button is-destructive"&gt;Button&lt;/button&gt;
+&lt;button class="button is-destructive is-secondary"&gt;Button&lt;/button&gt;
+&lt;button class="button is-destructive is-tertiary"&gt;Button&lt;/button&gt;
+
+// SASS
+.button.is-destructive {
+    // $back-color, $text-color
+    @include make-button(#ea6474, #fff);
+}
+</pre>
+                </div>
+
+            </div>
+            <div id="breadcrumb" class="is-content is-article">
+                <h1>Breadcrumb</h1>
+
+                <p class="lead">
+                    The best way to display the navigation path on a website is a breadcrumb.
+                    These are ready-to-use navigation elements with some different look and customization.
+                </p>
+
+                <!-- BASE -->
+                <h2 id="s-base"><a href="#s-base">Base <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <nav class="breadcrumb">
+                            <a href="#">Home</a>
+                            <a href="#">Shop</a>
+                            <a href="#">Catalog</a>
+                            <a href="#">T-Shirts</a>
+                            <span>Brand</span>
+                        </nav>
+                    </div>
+                    <pre>&lt;nav class="breadcrumb"&gt;
+    &lt;a href=""&gt;...&lt;/a&gt;
+    &lt;span&gt;...&lt;/span&gt;
+&lt;/nav&gt;
+</pre>
+                </div>
+
+
+                <!-- CUSTOM -->
+                <h2 id="s-custom-separator"><a href="#s-custom-separator">Custom Separator <span>#</span></a></h2>
+
+                <p>
+                    Do you need a custom separator between the breadcrumb pieces? Write a small CSS code with a modifier.
+                </p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <nav class="breadcrumb is-demo-breadcrumb-custom-separator">
+                            <a href="#">Home</a>
+                            <a href="#">Shop</a>
+                            <a href="#">Catalog</a>
+                            <a href="#">T-Shirts</a>
+                            <span>Brand</span>
+                        </nav>
+                    </div>
+                    <pre>// css
+.is-custom-separator a:after,
+.is-custom-separator span:after {
+    content: '&gt;';
+}
+
+// html
+&lt;nav class="breadcrumb is-custom-separator"&gt;
+    &lt;a href=""&gt;...&lt;/a&gt;
+    &lt;span&gt;...&lt;/span&gt;
+&lt;/nav&gt;
+</pre>
+                </div>
+            </div>
+            <div id="label" class="is-content is-article">
+                <h1>Label</h1>
+
+                <p class="lead">
+                    Labels have all standard Kube states (default, secondary, tertiary), so this makes them convenient for placing different accents as is.
+                    But the essential feature is customization. You can easily make your labels with colors you prefer.
+                </p>
+
+
+                <ul class="navigation-contents ">
+
+                    <li>
+                        <a href="#s-primary">Primary</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-secondary">Secondary</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-tertiary">Tertiary</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-removable">Removable</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-hoverable">Hoverable</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-badge-primary">Badge Primary</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-badge-secondary">Badge Secondary</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-badge-tertiary">Badge Tertiary</a>
+                    </li>
+
+                    <li>
+                        <a href="#s-custom">Custom</a>
+                    </li>
+
+                </ul>
+
+
+
+
+                <!-- PRIMARY -->
+                <h2 id="s-primary"><a href="#s-primary">Primary <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <span class="label">Draft</span>&nbsp;
+                        <span class="label is-error">Rejected</span>&nbsp;
+                        <span class="label is-focus">Status</span>&nbsp;
+                        <span class="label is-success">Approved</span>&nbsp;
+                        <span class="label is-warning">Pending</span>&nbsp;
+                    </div>
+                    <pre>&lt;span class="label"&gt;Draft&lt;/span&gt;
+&lt;span class="label is-error"&gt;Rejected&lt;/span&gt;
+&lt;span class="label is-focus"&gt;Status&lt;/span&gt;
+&lt;span class="label is-success"&gt;Approved&lt;/span&gt;
+&lt;span class="label is-warning"&gt;Pending&lt;/span&gt;
+</pre>
+                </div>
+
+                <!-- SECONDARY -->
+                <h2 id="s-secondary"><a href="#s-secondary">Secondary <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <span class="label is-secondary">Draft</span>&nbsp;
+                        <span class="label is-error is-secondary">Rejected</span>&nbsp;
+                        <span class="label is-focus is-secondary">Status</span>&nbsp;
+                        <span class="label is-success is-secondary">Approved</span>&nbsp;
+                        <span class="label is-warning is-secondary">Pending</span>&nbsp;
+                    </div>
+                    <pre>&lt;span class="label is-secondary"&gt;Draft&lt;/span&gt;
+&lt;span class="label is-error is-secondary"&gt;Rejected&lt;/span&gt;
+&lt;span class="label is-focus is-secondary"&gt;Status&lt;/span&gt;
+&lt;span class="label is-success is-secondary"&gt;Approved&lt;/span&gt;
+&lt;span class="label is-warning is-secondary"&gt;Pending&lt;/span&gt;
+</pre>
+                </div>
+
+
+                <!-- TERTIARY -->
+                <h2 id="s-tertiary"><a href="#s-tertiary">Tertiary <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <span class="label is-tertiary">Draft</span>&nbsp;
+                        <span class="label is-error is-tertiary">Rejected</span>&nbsp;
+                        <span class="label is-focus is-tertiary">Status</span>&nbsp;
+                        <span class="label is-success is-tertiary">Approved</span>&nbsp;
+                        <span class="label is-warning is-tertiary">Pending</span>&nbsp;
+                    </div>
+                    <pre>&lt;span class="label is-tertiary"&gt;Draft&lt;/span&gt;
+&lt;span class="label is-error is-tertiary"&gt;Rejected&lt;/span&gt;
+&lt;span class="label is-focus is-tertiary"&gt;Status&lt;/span&gt;
+&lt;span class="label is-success is-tertiary"&gt;Approved&lt;/span&gt;
+&lt;span class="label is-warning is-tertiary"&gt;Pending&lt;/span&gt;
+</pre>
+                </div>
+
+                <!-- REMOVABLE -->
+                <h2 id="s-removable"><a href="#s-removable">Removable <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <span class="label">Draft <span class="close"></span></span>&nbsp;
+                        <span class="label is-success is-secondary">Approved <span class="close"></span></span>&nbsp;
+                        <span class="label is-warning is-tertiary">Pending <span class="close"></span></span>&nbsp;
+                    </div>
+                    <pre>&lt;span class="label"&gt;Draft &lt;span class="close"&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="label is-success is-secondary"&gt;Approved &lt;span class="close"&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="label is-warning is-tertiary"&gt;Pending &lt;span class="close"&gt;&lt;/span&gt;&lt;/span&gt;
+</pre>
+                </div>
+
+
+                <!-- HOVERABLE -->
+                <h2 id="s-hoverable"><a href="#s-hoverable">Hoverable <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <a href="#" class="label">Draft</a>&nbsp;
+                        <a href="#" class="label is-error is-secondary">Rejected</a>&nbsp;
+                        <a href="#" class="label is-focus is-tertiary">Status</a>&nbsp;
+                    </div>
+                    <pre>&lt;a href="#" class="label"&gt;Draft&lt;/a&gt;
+&lt;a href="#" class="label is-error is-secondary"&gt;Rejected&lt;/a&gt;
+&lt;a href="#" class="label is-focus is-tertiary"&gt;Status&lt;/a&gt;
+</pre>
+                </div>
+
+
+                <!-- BADGE PRIMARY -->
+                <h2 id="s-badge-primary"><a href="#s-badge-primary">Badge Primary <span>#</span></a></h2>
+
+                <p>
+                    The <code>.is-badge</code> modifier makes the label round.
+                </p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <span class="label is-badge">2</span>&nbsp;
+                        <span class="label is-badge is-error">2</span>&nbsp;
+                        <span class="label is-badge is-focus">2</span>&nbsp;
+                        <span class="label is-badge is-success">2</span>&nbsp;
+                        <span class="label is-badge is-warning">2</span>&nbsp;
+                    </div>
+                    <pre>&lt;span class="label is-badge"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-error"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-focus"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-success"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-warning"&gt;2&lt;/span&gt;
+</pre>
+                </div>
+
+                <!-- BADGE SECONDARY -->
+                <h2 id="s-badge-secondary"><a href="#s-badge-secondary">Badge Secondary <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <span class="label is-badge is-secondary">2</span>&nbsp;
+                        <span class="label is-badge is-error is-secondary">2</span>&nbsp;
+                        <span class="label is-badge is-focus is-secondary">2</span>&nbsp;
+                        <span class="label is-badge is-success is-secondary">2</span>&nbsp;
+                        <span class="label is-badge is-warning is-secondary">2</span>&nbsp;
+                    </div>
+                    <pre>&lt;span class="label is-badge is-secondary"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-error is-secondary"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-focus is-secondary"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-success is-secondary"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-warning is-secondary"&gt;2&lt;/span&gt;
+</pre>
+                </div>
+
+
+                <!-- BADGE TERTIARY -->
+                <h2 id="s-badge-tertiary"><a href="#s-badge-tertiary">Badge Tertiary <span>#</span></a></h2>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <span class="label is-badge is-tertiary">2</span>&nbsp;
+                        <span class="label is-badge is-error is-tertiary">2</span>&nbsp;
+                        <span class="label is-badge is-focus is-tertiary">2</span>&nbsp;
+                        <span class="label is-badge is-success is-tertiary">2</span>&nbsp;
+                        <span class="label is-badge is-warning is-tertiary">2</span>&nbsp;
+                    </div>
+                    <pre>&lt;span class="label is-badge is-tertiary"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-error is-tertiary"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-focus is-tertiary"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-success is-tertiary"&gt;2&lt;/span&gt;
+&lt;span class="label is-badge is-warning is-tertiary"&gt;2&lt;/span&gt;
+</pre>
+                </div>
+
+
+                <!-- CUSTOM -->
+                <h2 id="s-custom"><a href="#s-custom">Custom <span>#</span></a></h2>
+                <p>You can use the mixin <code>make-label</code> to customize your labels and badges.</p>
+
+                <div class="demo-box">
+                    <div class="demo-example">
+                        <span class="label label-custom">Custom</span>&nbsp;
+                        <span class="label label-custom">Custom <span class="close"></span></span>&nbsp;
+                        <span class="label label-custom is-badge">2</span>&nbsp;
+                        <span class="label label-custom is-secondary">Secondary</span>&nbsp;
+                        <span class="label label-custom is-tertiary">Tertiary</span>
+                    </div>
+                    <pre>// scss
+.label.label-custom {
+    @include make-label(#7b2ed7);
+}
+
+// html
+&lt;span class="label label-custom"&gt;Custom&lt;/span&gt;
+&lt;span class="label label-custom is-badge"&gt;2&lt;/span&gt;
+&lt;span class="label label-custom is-secondary"&gt;Secondary&lt;/span&gt;
+&lt;span class="label label-custom is-tertiary"&gt;Tertiary&lt;/span&gt;
+</pre>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <footer class="footer">Made with <3 @ Spletna Postaja</footer>
+</div>
+</body>
+
+</html>

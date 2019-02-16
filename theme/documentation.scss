@@ -1,0 +1,58 @@
+
+/*
+	Documentation Theme Generic file
+	@author: tanja.gomilar@spletna-postaja.com
+*/
+
+@import "../functions/functions";
+@import "variables";
+@import "../mixins/mixins";
+@import "../layout/modules";
+
+
+body {
+    background-image: linear-gradient(to left top, #38438b, #944b94, #d75a88, #ff7e71, #ffb25f, #ffeb68);
+}
+
+.page {
+    @include make-container-column;
+    @extend .is-width-large;
+    margin: auto;
+
+    .main-sidebar {
+        @include make-sidebar(240px);
+        padding: rem(30);
+        margin-right: rem(30);
+        background: $color-white;
+        box-sizing: border-box;
+        box-shadow: $shadow-1;
+
+        @include is-mobile {
+            margin-right: 0;
+        }
+
+        nav {
+            position: sticky;
+            top: rem(30);
+            @include make-container-column;
+            a {
+                display: block;
+                padding: rem(6) rem(5);
+                margin: rem(2) 0;
+                background: #ffb25f;
+            }
+        }
+    }
+    .main-content {
+        @include make-content;
+        padding: rem(30);
+        background: $color-white;
+        box-sizing: border-box;
+        box-shadow: $shadow-1;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: rem(40) 0;
+}

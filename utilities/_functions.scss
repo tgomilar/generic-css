@@ -1,0 +1,44 @@
+// =FUNCTIONS
+// ---------------------------------------------------------------------------
+
+// Strip units like px
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number)
+    {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+// Convert pixels to ems
+// eg. for a relational value of 12px write em(12) when the parent is 16px
+// if the parent is another value say 24px write em(12, 24)
+@function em($px-val, $base: $font-base) {
+
+    @if not unitless($px-val) {
+        $px-val: strip-unit($px-val);
+    }
+    @if not unitless($base) {
+        $base: strip-unit($base);
+    }
+
+    @return ($px-val / $base) * 1em;
+}
+
+// Convert pixels to rems
+// eg. for a relational value of 12px write rem(12)
+// Assumes $font-base is the font-size of <html>
+@function rem($px-val) {
+
+    @if not unitless($px-val) {
+        $px-val: strip-unit($px-val);
+    }
+
+    $base: $font-base;
+    @if not unitless($base) {
+        $base: strip-unit($base);
+    }
+
+    @return ($px-val / $base) * 1rem;
+}

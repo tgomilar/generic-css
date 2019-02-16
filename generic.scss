@@ -1,0 +1,30 @@
+// GENERIC-CSS
+// ---------------------------------------------------------------------------
+
+@import "utilities/functions";
+@import "variables";
+@import "utilities/mixins";
+
+@import "utilities/animation";
+@import "utilities/reset";
+@import "utilities/icons";
+@import "utilities/typography";
+@import "utilities/grid";
+@import "utilities/offcanvas";
+@import "components/table";
+@import "components/label";
+@import "components/button";
+@import "components/form";
+@import "components/breadcrumb";
+@import "components/alert";
+@import "components/navbar";
+@import "components/tabs";
+@import "components/dropdown";
+@import "components/modal";
+@import "components/progress";
+
+
+// extra
+@import "utilities/helpers";
+@import "utilities/space";
+@import "utilities/print";
