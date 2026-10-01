@@ -1,740 +1,350 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Generic CSS</title>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generic CSS</title>
+    <meta name="description" content="Generic CSS: an SCSS foundation for building a frontend design system. Tokens, utilities and components, all driven by overridable variables.">
 
-    <!-- GeneriCss -->
-    <link rel="stylesheet" href="css/documentation.css">
+    <link rel="stylesheet" href="css/generic.css">
 
+    <!-- Page layout only. Every component below is styled by css/generic.css. -->
+    <style>
+        body { background: #fff; }
+        .sc-wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+        .sc-hero { padding: 96px 0 72px; background: #111113; color: #fff; }
+        .sc-hero h1 { color: #fff; font-size: 56px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 20px; }
+        .sc-hero h1 span { color: #ff6951; }
+        .sc-hero p { color: rgba(255, 255, 255, .72); font-size: 20px; max-width: 620px; margin: 0 0 32px; }
+        .sc-hero .sc-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+        .sc-eyebrow { display: inline-block; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, .55); margin-bottom: 16px; }
+
+        .sc-layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
+        .sc-layer { border: 1px solid rgba(255, 255, 255, .14); border-radius: 6px; padding: 20px; }
+        .sc-layer b { display: block; color: #fff; margin-bottom: 6px; }
+        .sc-layer small { color: rgba(255, 255, 255, .6); font-size: 14px; line-height: 1.5; display: block; }
+        .sc-layer code { background: rgba(255, 255, 255, .1); color: #fff; }
+
+        .sc-section { padding: 72px 0; border-bottom: 1px solid rgba(17, 17, 19, .07); }
+        .sc-section h2 { font-size: 32px; margin: 0 0 8px; }
+        .sc-section > .sc-wrap > p { color: rgba(17, 17, 19, .6); max-width: 640px; margin: 0 0 32px; }
+        .sc-demo { border: 1px solid rgba(17, 17, 19, .08); border-radius: 6px; padding: 28px; margin-bottom: 16px; }
+        .sc-demo + pre { margin-top: 0; }
+        .sc-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+        .sc-dark { background: #111113; }
+
+        .sc-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+        .sc-swatch { border-radius: 6px; overflow: hidden; border: 1px solid rgba(17, 17, 19, .08); }
+        .sc-swatch i { display: block; height: 72px; }
+        .sc-swatch div { padding: 10px 12px; font-size: 13px; line-height: 1.4; }
+        .sc-swatch code { background: none; padding: 0; font-size: 12px; color: rgba(17, 17, 19, .55); }
+
+        .sc-grid-demo .is-col { background: rgba(21, 141, 247, .1); border: 1px dashed rgba(21, 141, 247, .5); border-radius: 4px; padding: 14px 0; text-align: center; font-size: 13px; color: #0c3dd7; margin-bottom: 12px; }
+
+        .sc-space { display: flex; align-items: center; gap: 16px; font-size: 13px; margin-bottom: 8px; }
+        .sc-space code { width: 96px; flex-shrink: 0; }
+        .sc-space i { display: block; height: 12px; background: #ff6951; border-radius: 2px; }
+
+        .sc-shadows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .sc-shadows div { background: #fff; border-radius: 6px; padding: 32px 16px; text-align: center; font-size: 14px; }
+
+        .sc-footer { padding: 48px 0; color: rgba(17, 17, 19, .55); font-size: 14px; }
+
+        @media (max-width: 767px) {
+            .sc-hero { padding: 64px 0 48px; }
+            .sc-hero h1 { font-size: 40px; }
+            .sc-hero p { font-size: 18px; }
+            .sc-layers, .sc-shadows { grid-template-columns: 1fr; }
+            .sc-section { padding: 48px 0; }
+            .sc-demo { padding: 20px; }
+            pre { overflow-x: auto; }
+        }
+    </style>
 </head>
 
 <body>
 
+<header class="sc-hero">
+    <div class="sc-wrap">
+        <span class="sc-eyebrow">SCSS foundation for a frontend system</span>
+        <h1>Generic <span>CSS</span></h1>
+        <p>
+            A base layer for building a design system. Design tokens, layout utilities and a set of
+            components, all driven by variables you can override. Change the tokens and every
+            component follows.
+        </p>
+        <div class="sc-actions">
+            <a class="button" href="https://github.com/tgomilar/generic-css">View on GitHub</a>
+            <a class="button is-inverted is-tertiary" href="#tokens">See the system</a>
+        </div>
 
-<div class="page">
-    <header class="header">
-        <div class="is-navbar-container">
-            <div class="is-navbar">
-                <nav class="is-center is-text-center">
-                    <h1>Grid Css</h1>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
+        <div class="sc-layers">
+            <div class="sc-layer">
+                <b>1. Tokens</b>
+                <small>Colours, spacing, breakpoints, shadows and type in <code>_variables.scss</code>. All marked <code>!default</code>.</small>
+            </div>
+            <div class="sc-layer">
+                <b>2. Utilities</b>
+                <small>Reset, typography, grid, spacing, helpers, animation, off-canvas and print styles.</small>
+            </div>
+            <div class="sc-layer">
+                <b>3. Components</b>
+                <small>Button, label, alert, form, table, tabs, breadcrumb, navbar, dropdown, modal, pager and progress.</small>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- TOKENS -->
+    <section class="sc-section" id="tokens">
+        <div class="sc-wrap">
+            <h2>Tokens</h2>
+            <p>Everything starts from a small set of variables. Components never use raw values, so one change here restyles the whole system.</p>
+
+            <div class="sc-swatches">
+                <div class="sc-swatch"><i style="background:#111113"></i><div>Black<br><code>$color-black</code></div></div>
+                <div class="sc-swatch"><i style="background:#0c3dd7"></i><div>Button<br><code>$color-button</code></div></div>
+                <div class="sc-swatch"><i style="background:#158df7"></i><div>Blue / focus<br><code>$color-blue</code></div></div>
+                <div class="sc-swatch"><i style="background:#ee2455"></i><div>Red / error<br><code>$color-red</code></div></div>
+                <div class="sc-swatch"><i style="background:#ff6951"></i><div>Orange / warning<br><code>$color-orange</code></div></div>
+                <div class="sc-swatch"><i style="background:#feb701"></i><div>Yellow<br><code>$color-yellow</code></div></div>
+                <div class="sc-swatch"><i style="background:#20bc71"></i><div>Green / success<br><code>$color-green</code></div></div>
+                <div class="sc-swatch"><i style="background:#7b2ed7"></i><div>Violet<br><code>$color-violet</code></div></div>
+            </div>
+
+            <h3 class="is-stack-48">Spacing scale</h3>
+            <div class="sc-demo">
+                <div class="sc-space"><code>$space-4</code><i style="width:4px"></i>4px</div>
+                <div class="sc-space"><code>$space-8</code><i style="width:8px"></i>8px</div>
+                <div class="sc-space"><code>$space-16</code><i style="width:16px"></i>16px</div>
+                <div class="sc-space"><code>$space-24</code><i style="width:24px"></i>24px</div>
+                <div class="sc-space"><code>$space-32</code><i style="width:32px"></i>32px</div>
+                <div class="sc-space"><code>$space-48</code><i style="width:48px"></i>48px</div>
+                <div class="sc-space"><code>$space-64</code><i style="width:64px"></i>64px</div>
+                <div class="sc-space"><code>$space-120</code><i style="width:120px"></i>120px</div>
+            </div>
+            <pre>&lt;div class="is-inset-24 is-stack-32 is-outset-x-16"&gt;...&lt;/div&gt;</pre>
+
+            <h3 class="is-stack-48">Elevation</h3>
+            <div class="sc-shadows">
+                <div class="is-shadow-1">is-shadow-1</div>
+                <div class="is-shadow-2">is-shadow-2</div>
+                <div class="is-shadow-3">is-shadow-3</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRID -->
+    <section class="sc-section" id="grid">
+        <div class="sc-wrap">
+            <h2>Grid</h2>
+            <p>A flexbox grid of rows and percentage columns. Columns stack on screens narrower than the <code>$sm</code> breakpoint.</p>
+
+            <div class="sc-demo sc-grid-demo">
+                <div class="is-row">
+                    <div class="is-col">is-col</div>
+                    <div class="is-col">is-col</div>
+                    <div class="is-col">is-col</div>
+                </div>
+                <div class="is-row">
+                    <div class="is-col is-25">is-25</div>
+                    <div class="is-col is-75">is-75</div>
+                </div>
+                <div class="is-row">
+                    <div class="is-col is-33">is-33</div>
+                    <div class="is-col is-67">is-67</div>
+                </div>
+                <div class="is-row">
+                    <div class="is-col is-50">is-50</div>
+                    <div class="is-col is-50">is-50</div>
+                </div>
+            </div>
+            <pre>&lt;div class="is-row"&gt;
+    &lt;div class="is-col is-33"&gt;...&lt;/div&gt;
+    &lt;div class="is-col is-67"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section class="sc-section" id="buttons">
+        <div class="sc-wrap">
+            <h2>Buttons</h2>
+            <p>Three levels of emphasis, three sizes, and inverted, loading and disabled states.</p>
+
+            <div class="sc-demo">
+                <div class="sc-row">
+                    <button class="button">Primary</button>
+                    <button class="button is-secondary">Secondary</button>
+                    <button class="button is-tertiary">Tertiary</button>
+                    <button class="button is-disabled">Disabled</button>
+                </div>
+            </div>
+            <div class="sc-demo">
+                <div class="sc-row">
+                    <button class="button is-small">Small</button>
+                    <button class="button">Default</button>
+                    <button class="button is-big">Big</button>
+                </div>
+            </div>
+            <div class="sc-demo sc-dark">
+                <div class="sc-row">
+                    <button class="button is-inverted">Inverted</button>
+                    <button class="button is-inverted is-secondary">Inverted secondary</button>
+                    <button class="button is-inverted is-tertiary">Inverted tertiary</button>
+                </div>
+            </div>
+            <pre>&lt;button class="button is-secondary is-big"&gt;Save&lt;/button&gt;</pre>
+        </div>
+    </section>
+
+    <!-- FEEDBACK -->
+    <section class="sc-section" id="feedback">
+        <div class="sc-wrap">
+            <h2>Labels and alerts</h2>
+            <p>Status colours come from the same tokens, so error, success, focus and warning look the same everywhere.</p>
+
+            <div class="sc-demo">
+                <div class="sc-row">
+                    <span class="label">Default</span>
+                    <span class="label is-secondary">Secondary</span>
+                    <span class="label is-tertiary">Tertiary</span>
+                    <span class="label is-success">Success</span>
+                    <span class="label is-error">Error</span>
+                    <span class="label is-focus">Focus</span>
+                    <span class="label is-warning">Warning</span>
+                </div>
+            </div>
+            <div class="sc-demo">
+                <div class="alert">You have 2 modules waiting for installation. <a href="#feedback">Install</a></div>
+                <div class="alert is-success">Your changes were saved.</div>
+                <div class="alert is-error">Something went wrong. Please try again.</div>
+                <div class="alert is-focus" style="margin-bottom:0">A new version is available.</div>
+            </div>
+            <pre>&lt;span class="label is-success"&gt;Live&lt;/span&gt;
+&lt;div class="alert is-error"&gt;...&lt;/div&gt;</pre>
+        </div>
+    </section>
+
+    <!-- FORMS -->
+    <section class="sc-section" id="forms">
+        <div class="sc-wrap">
+            <h2>Forms</h2>
+            <p>Inputs, selects, checkboxes, validation states and input groups with appended or prepended parts.</p>
+
+            <div class="sc-demo">
+                <form onsubmit="return false">
+                    <div class="is-row">
+                        <div class="is-col">
+                            <div class="form-item">
+                                <label>Name <span class="is-req">*</span></label>
+                                <input type="text" placeholder="Jane Doe">
+                            </div>
+                        </div>
+                        <div class="is-col">
+                            <div class="form-item">
+                                <label>Email</label>
+                                <input type="email" class="is-error" value="jane@">
+                                <div class="is-desc is-error">Please enter a valid address.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="is-row">
+                        <div class="is-col">
+                            <div class="form-item">
+                                <label>Website</label>
+                                <div class="is-prepend">
+                                    <span>https://</span>
+                                    <input type="text" placeholder="example.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="is-col">
+                            <div class="form-item">
+                                <label>Plan</label>
+                                <select>
+                                    <option>Starter</option>
+                                    <option>Team</option>
+                                    <option>Enterprise</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <label class="is-checkbox"><input type="checkbox" checked> Send me product updates</label>
+                    </div>
+                    <div class="form-item is-buttons" style="margin-bottom:0">
+                        <button class="button">Create account</button>
+                        <button class="button is-tertiary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVIGATION AND DATA -->
+    <section class="sc-section" id="navigation">
+        <div class="sc-wrap">
+            <h2>Navigation and data</h2>
+            <p>Tabs, breadcrumbs and tables for the structure around your content.</p>
+
+            <div class="sc-demo">
+                <nav class="tabs">
+                    <a href="#navigation" class="is-active">Overview</a>
+                    <a href="#navigation">Activity</a>
+                    <a href="#navigation">Settings</a>
+                </nav>
+                <nav class="breadcrumb">
+                    <a href="#navigation">Home</a>
+                    <a href="#navigation">Projects</a>
+                    <span>Generic CSS</span>
                 </nav>
             </div>
-        </div>
-    </header>
-    <main class="main is-container">
-        <div class="main-sidebar">
-            <nav>
-                <a href="#alert">Alert</a>
-                <a href="#button">Button</a>
-                <a href="#breadcrumb">Breadcrumb</a>
-                <a href="#label">Label</a>
-            </nav>
-        </div>
-        <div class="main-content">
-            <div id="alert" class="is-content is-article">
-                <h1>Alert</h1>
-
-                <p class="lead">
-                    Take a div, give it an alert class, add a color using meaningful classes like <code>is-error</code>
-                    or
-                    <code>is-success</code>
-                    and you're practically done!
-                </p>
-
-                <!-- USAGE -->
-                <h2 id="s-usage"><a href="#s-usage">Usage <span>#</span></a></h2>
-                <p>The default alert is just a styled block with a message, without interactivity.</p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <div class="alert">
-                            You have 2 modules waiting for installation. <a href="#install">Install</a>
-                        </div>
-                    </div>
-                    <pre>&lt;div class="alert"&gt;...&lt;/div&gt;</pre>
+            <div class="sc-demo">
+                <div class="is-table-container">
+                    <table class="is-striped" style="margin-bottom:0">
+                        <thead>
+                            <tr><th>Layer</th><th>Files</th><th>Purpose</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Tokens</td><td><code>_variables.scss</code></td><td>Every value the system uses</td></tr>
+                            <tr><td>Utilities</td><td><code>utilities/</code></td><td>Layout, spacing, type and helpers</td></tr>
+                            <tr><td>Mixins</td><td><code>utilities/mixins/</code></td><td>Breakpoints, flex and component building blocks</td></tr>
+                            <tr><td>Components</td><td><code>components/</code></td><td>Ready UI pieces built from tokens</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <hr>
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <!-- ALERT INIT -->
-                        <div class="alert">
-                            <p>You have 2 modules waiting for installation. <a href="#install">Install</a></p>
-                            <span class="close"></span>
-                        </div>
-                    </div>
-                    <pre>&lt;div class="alert"&gt;
-    You have 2 modules waiting for installation.
-    <b>&lt;span class="close is-small"&gt;&lt;/span&gt;</b>
-&lt;/div&gt;</pre>
-                </div>
-                <hr>
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <div class="alert is-error">
-                            You have 2 modules waiting for installation. <a href="">Install</a>
-                        </div>
-                    </div>
-                    <pre>&lt;div class="alert is-error"&gt;...&lt;/div&gt;</pre>
-                </div>
-                <hr>
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <div class="alert is-success">
-                            You have 2 modules waiting for installation. <a href="">Install</a>
-                        </div>
-                    </div>
-                    <pre>&lt;div class="alert is-success"&gt;...&lt;/div&gt;</pre>
-                </div>
-                <hr>
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <div class="alert is-focus">
-                            You have 2 modules waiting for installation. <a href="">Install</a>
-                        </div>
-                    </div>
-                    <pre>&lt;div class="alert is-focus"&gt;...&lt;/div&gt;</pre>
-                </div>
-                <hr>
-                <div class="demo-box">
-                    <div class="demo-example demo-inverted-box">
-                        <div class="alert is-inverted" style="background: black;">
-                            You have 2 modules waiting for installation. <a href="">Install</a>
-                        </div>
-                    </div>
-                    <pre>&lt;div class="alert is-inverted"&gt;...&lt;/div&gt;</pre>
-                </div>
-            </div>
-            <div id="button" class="is-content is-article">
-                <h1>Button</h1>
-
-                <p class="lead">
-                    Buttons in Kube are minimalistic, designed for instant and convenient customization, and are ready
-                    to be pushed, pressed, clicked and manipulated in whichever ways. A lot of interactive components
-                    use buttons, and you should too.
-                </p>
-
-
-                <ul class="navigation-contents is-columns">
-
-                    <li>
-                        <a href="#s-default">Default</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-secondary">Secondary</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-tertiary">Tertiary</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-small">Small</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-big">Big</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-disabled">Disabled</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-size">Size</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-inverted">Inverted</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-width">Width</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-icons">Icons</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-caret">Caret</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-loading">Loading</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-custom">Custom</a>
-                    </li>
-
-                </ul>
-
-
-                <!-- DEFAULT -->
-                <h2 id="s-default"><a href="#s-default">Default <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button">Button</button>
-                        &nbsp;
-                        <a href="#" class="button">Button</a>
-                    </div>
-                    <pre>&lt;button class="button"&gt;Button&lt;/button&gt;
-&lt;a href="#" class="button"&gt;Button&lt;/a&gt;
-</pre>
-                </div>
-
-                <!-- SECONDARY -->
-                <h2 id="s-secondary"><a href="#s-secondary">Secondary <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button is-secondary">Button</button>
-                        &nbsp;
-                        <a href="#" class="button is-secondary">Button</a>
-                    </div>
-                    <pre>&lt;button class="button is-secondary"&gt;Button&lt;/button&gt;
-&lt;a href="#" class="button is-secondary"&gt;Button&lt;/a&gt;
-</pre>
-                </div>
-
-                <!-- TERTIARY -->
-                <h2 id="s-tertiary"><a href="#s-tertiary">Tertiary <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button is-tertiary">Button</button>
-                        &nbsp;&nbsp;
-                        <a href="#" class="button is-tertiary">Button</a>
-                    </div>
-                    <pre>&lt;button class="button is-tertiary"&gt;Button&lt;/button&gt;
-&lt;a href="#" class="button is-tertiary"&gt;Button&lt;/a&gt;
-</pre>
-                </div>
-
-
-                <!-- SMALL -->
-                <h2 id="s-small"><a href="#s-small">Small <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button is-small">Button</button>
-                        &nbsp;
-                        <button class="button is-secondary is-small">Button</button>
-                        &nbsp;
-                        <button class="button is-tertiary is-small">Button</button>
-                    </div>
-                    <pre>&lt;button class="button is-small"&gt;Button&lt;/button&gt;
-&lt;button class="button is-secondary is-small"&gt;Button&lt;/button&gt;
-&lt;button class="button is-tertiary is-small"&gt;Button&lt;/button&gt;
-</pre>
-                </div>
-
-                <!-- BIG -->
-                <h2 id="s-big"><a href="#s-big">Big <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button is-big">Button</button>
-                        &nbsp;
-                        <button class="button is-secondary is-big">Button</button>
-                        &nbsp;
-                        <button class="button is-tertiary is-big">Button</button>
-                    </div>
-                    <pre>&lt;button class="button is-big"&gt;Button&lt;/button&gt;
-&lt;button class="button is-secondary is-big"&gt;Button&lt;/button&gt;
-&lt;button class="button is-tertiary is-big"&gt;Button&lt;/button&gt;
-</pre>
-                </div>
-
-
-                <!-- DISABLED -->
-                <h2 id="s-disabled"><a href="#s-disabled">Disabled <span>#</span></a></h2>
-                <p>Disabled buttons are automatically styles with muted colors, inactive and not clickable. As you can
-                    see, there's no need to set disabled class for the button element, and disabled argument is enough.
-                    Having this said, both a link and a button input require disabled class.</p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button" disabled="">Button</button> &nbsp;
-                        <button class="button is-disabled">Button</button> &nbsp;
-                        <button class="button is-secondary" disabled="">Button</button> &nbsp;&nbsp;
-                        <button class="button is-tertiary" disabled="">Button</button>
-                    </div>
-                    <pre>&lt;button class="button" disabled&gt;Button&lt;/button&gt;
-&lt;button class="button is-disabled"&gt;Button&lt;/button&gt;
-&lt;button class="button is-secondary" disabled&gt;Button&lt;/button&gt;
-&lt;button class="button is-tertiary" disabled&gt;Button&lt;/button&gt;
-</pre>
-                </div>
-
-
-                <!-- SIZE -->
-                <h2 id="s-size"><a href="#s-size">Size <span>#</span></a></h2>
-
-                <p>Just increase or decrease the font size for your button to make it bigger or smaller.</p>
-
-                <div class="demo-box">
-                    <div class="demo-example demo-example-top-align">
-                        <a href="#" class="button demo-button-action-big" role="button">Button</a>
-                        &nbsp;
-                        <button class="button is-secondary demo-button-action-small">Button</button>
-                    </div>
-                    <pre class="code">// css
-.button-action-big {
-    font-size: 20px;
-}
-.button-action-small {
-    font-size: 13px;
-}
-// html
-&lt;a href="#" class="button button-action-big" role="button"&gt;Button&lt;/a&gt;
-&lt;button class="button is-secondary button-action-small"&gt;Button&lt;/button&gt;
-</pre>
-                </div>
-
-
-                <!-- INVERTED -->
-                <h2 id="s-inverted"><a href="#s-inverted">Inverted <span>#</span></a></h2>
-                <p>For use on darker backgrounds, you can just introduce inverted class to have your button flip its
-                    color to the opposite one.</p>
-
-                <div class="demo-box">
-                    <div class="demo-example demo-inverted-box">
-                        <p>
-                            <a href="#" class="button is-inverted" role="button">Button</a> &nbsp;
-                            <button class="button is-inverted is-secondary">Button</button> &nbsp;&nbsp;
-                            <button class="button is-inverted is-tertiary">Button</button>
-                        </p>
-                        <br>
-                        <p class="is-outset-none">
-                            <button class="button is-inverted" disabled="">Disabled</button> &nbsp;
-                            <button class="button is-inverted is-secondary" disabled="">Disabled</button> &nbsp;&nbsp;
-                            <button class="button is-inverted is-tertiary" disabled="">Disabled</button>
-                        </p>
-                    </div>
-                    <pre>&lt;a href="#" class="button is-inverted" role="button"&gt;Button&lt;/a&gt;
-&lt;button class="button is-inverted is-secondary"&gt;Button&lt;/button&gt;
-&lt;button class="button is-inverted is-tertiary"&gt;Button&lt;/button&gt;
-
-&lt;button class="button is-inverted" disabled&gt;Disabled&lt;/button&gt;
-&lt;button class="button is-inverted is-secondary" disabled&gt;Disabled&lt;/button&gt;
-&lt;button class="button is-inverted is-tertiary" disabled&gt;Disabled&lt;/button&gt;
-</pre>
-                </div>
-
-                <!-- WIDTH -->
-                <h2 id="s-width"><a href="#s-width">Width <span>#</span></a></h2>
-
-                <p>Following <a href="/kube/docs/modules/helpers/#s-width">framework-wide rules</a>, it is very easy to
-                    manipulate button width sizes.
-                    Just use <code>is-100</code> class to make a button 100% wide or <code>is-50</code> to a 50% wide.
-                </p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <p>
-                            <button class="button is-100">Button 100%</button>
-                        </p>
-                        <p>
-                            <button class="button is-secondary is-50">Button 50%</button>
-                        </p>
-                    </div>
-                    <pre>&lt;button class="button is-100"&gt;...&lt;/button&gt;
-&lt;button class="button is-secondary is-50"&gt;...&lt;/button&gt;
-</pre>
-                </div>
-
-                <!-- ICONS -->
-                <h2 id="s-icons"><a href="#s-icons">Icons <span>#</span></a></h2>
-
-                <p>In the buttons, you can use <a href="/kube/docs/modules/helpers/#s-icons">predefined Kube's icons</a>
-                    or any other icons from your favorite set, to give the buttons more meaning.</p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button is-icon"><span class="icon-kube-calendar"></span></button> &nbsp;
-                        <button class="button is-icon"><span class="icon-kube-calendar"></span> Change</button> &nbsp;
-                        <button class="button is-secondary is-icon"><span class="icon-kube-search"></span></button>
-                        &nbsp;
-                        <button class="button is-secondary is-icon"><span class="icon-kube-search"></span> Search
-                        </button>
-                    </div>
-                    <pre>&lt;button class="button is-icon"&gt;&lt;span class="icon-kube-calendar"&gt;&lt;/span&gt;&lt;/button&gt;
-&lt;button class="button is-icon"&gt;&lt;span class="icon-kube-calendar"&gt;&lt;/span&gt; Change&lt;/button&gt;
-&lt;button class="button is-secondary is-icon"&gt;&lt;span class="icon-kube-search"&gt;&lt;/span&gt;&lt;/button&gt;
-&lt;button class="button is-secondary is-icon"&gt;&lt;span class="icon-kube-search"&gt;&lt;/span&gt; Search&lt;/button&gt;
-</pre>
-                </div>
-
-                <!-- CARET -->
-                <h2 id="s-caret"><a href="#s-caret">Caret <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button">Button<span class="caret is-down"></span></button> &nbsp;
-                        <button class="button is-secondary">Button<span class="caret is-down"></span></button> &nbsp;&nbsp;
-                        <button class="button is-tertiary">Button<span class="caret is-down"></span></button>
-                    </div>
-                    <pre>&lt;button class="button"&gt;Button &lt;span class="caret is-down"&gt;&lt;/span&gt;&lt;/button&gt;
-&lt;button class="button is-secondary"&gt;Button &lt;span class="caret is-down"&gt;&lt;/span&gt;&lt;/button&gt;
-&lt;button class="button is-tertiary"&gt;Button &lt;span class="caret is-down"&gt;&lt;/span&gt;&lt;/button&gt;
-</pre>
-                </div>
-
-                <!-- LOADING -->
-                <h2 id="s-loading"><a href="#s-loading">Loading <span>#</span></a></h2>
-
-                <p>Add the <code>loading</code> class to your button to show the progress state.</p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button is-loading"></button>
-                        &nbsp;
-                        <button class="button is-loading">Loading</button>
-                        &nbsp;
-                        <button class="button is-secondary is-loading">Loading</button>
-                        &nbsp;
-                        <button class="button is-tertiary is-loading">Loading</button>
-                    </div>
-                    <pre>&lt;button class="button is-loading"&gt;&lt;/button&gt;
-&lt;button class="button is-loading"&gt;Loading&lt;/button&gt;
-&lt;button class="button is-secondary is-loading"&gt;Loading&lt;/button&gt;
-&lt;button class="button is-tertiary is-loading"&gt;Loading&lt;/button
-</pre>
-                </div>
-
-                <!-- CUSTOM -->
-                <h2 id="s-custom"><a href="#s-custom">Custom <span>#</span></a></h2>
-                <p>With some Sass magic, you can customize your buttons in a snap. Just include a color class
-                    declaration and set the color itself, and you're done.</p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <button class="button is-destructive">Button</button> &nbsp;
-                        <button class="button is-destructive is-secondary">Button</button> &nbsp;&nbsp;
-                        <button class="button is-destructive is-tertiary">Button</button>
-                    </div>
-                    <pre>// HTML
-&lt;button class="button is-destructive"&gt;Button&lt;/button&gt;
-&lt;button class="button is-destructive is-secondary"&gt;Button&lt;/button&gt;
-&lt;button class="button is-destructive is-tertiary"&gt;Button&lt;/button&gt;
-
-// SASS
-.button.is-destructive {
-    // $back-color, $text-color
-    @include make-button(#ea6474, #fff);
-}
-</pre>
-                </div>
-
-            </div>
-            <div id="breadcrumb" class="is-content is-article">
-                <h1>Breadcrumb</h1>
-
-                <p class="lead">
-                    The best way to display the navigation path on a website is a breadcrumb.
-                    These are ready-to-use navigation elements with some different look and customization.
-                </p>
-
-                <!-- BASE -->
-                <h2 id="s-base"><a href="#s-base">Base <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <nav class="breadcrumb">
-                            <a href="#">Home</a>
-                            <a href="#">Shop</a>
-                            <a href="#">Catalog</a>
-                            <a href="#">T-Shirts</a>
-                            <span>Brand</span>
-                        </nav>
-                    </div>
-                    <pre>&lt;nav class="breadcrumb"&gt;
-    &lt;a href=""&gt;...&lt;/a&gt;
-    &lt;span&gt;...&lt;/span&gt;
-&lt;/nav&gt;
-</pre>
-                </div>
-
-
-                <!-- CUSTOM -->
-                <h2 id="s-custom-separator"><a href="#s-custom-separator">Custom Separator <span>#</span></a></h2>
-
-                <p>
-                    Do you need a custom separator between the breadcrumb pieces? Write a small CSS code with a modifier.
-                </p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <nav class="breadcrumb is-demo-breadcrumb-custom-separator">
-                            <a href="#">Home</a>
-                            <a href="#">Shop</a>
-                            <a href="#">Catalog</a>
-                            <a href="#">T-Shirts</a>
-                            <span>Brand</span>
-                        </nav>
-                    </div>
-                    <pre>// css
-.is-custom-separator a:after,
-.is-custom-separator span:after {
-    content: '&gt;';
-}
-
-// html
-&lt;nav class="breadcrumb is-custom-separator"&gt;
-    &lt;a href=""&gt;...&lt;/a&gt;
-    &lt;span&gt;...&lt;/span&gt;
-&lt;/nav&gt;
-</pre>
-                </div>
-            </div>
-            <div id="label" class="is-content is-article">
-                <h1>Label</h1>
-
-                <p class="lead">
-                    Labels have all standard Kube states (default, secondary, tertiary), so this makes them convenient for placing different accents as is.
-                    But the essential feature is customization. You can easily make your labels with colors you prefer.
-                </p>
-
-
-                <ul class="navigation-contents ">
-
-                    <li>
-                        <a href="#s-primary">Primary</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-secondary">Secondary</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-tertiary">Tertiary</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-removable">Removable</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-hoverable">Hoverable</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-badge-primary">Badge Primary</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-badge-secondary">Badge Secondary</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-badge-tertiary">Badge Tertiary</a>
-                    </li>
-
-                    <li>
-                        <a href="#s-custom">Custom</a>
-                    </li>
-
-                </ul>
-
-
-
-
-                <!-- PRIMARY -->
-                <h2 id="s-primary"><a href="#s-primary">Primary <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <span class="label">Draft</span>&nbsp;
-                        <span class="label is-error">Rejected</span>&nbsp;
-                        <span class="label is-focus">Status</span>&nbsp;
-                        <span class="label is-success">Approved</span>&nbsp;
-                        <span class="label is-warning">Pending</span>&nbsp;
-                    </div>
-                    <pre>&lt;span class="label"&gt;Draft&lt;/span&gt;
-&lt;span class="label is-error"&gt;Rejected&lt;/span&gt;
-&lt;span class="label is-focus"&gt;Status&lt;/span&gt;
-&lt;span class="label is-success"&gt;Approved&lt;/span&gt;
-&lt;span class="label is-warning"&gt;Pending&lt;/span&gt;
-</pre>
-                </div>
-
-                <!-- SECONDARY -->
-                <h2 id="s-secondary"><a href="#s-secondary">Secondary <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <span class="label is-secondary">Draft</span>&nbsp;
-                        <span class="label is-error is-secondary">Rejected</span>&nbsp;
-                        <span class="label is-focus is-secondary">Status</span>&nbsp;
-                        <span class="label is-success is-secondary">Approved</span>&nbsp;
-                        <span class="label is-warning is-secondary">Pending</span>&nbsp;
-                    </div>
-                    <pre>&lt;span class="label is-secondary"&gt;Draft&lt;/span&gt;
-&lt;span class="label is-error is-secondary"&gt;Rejected&lt;/span&gt;
-&lt;span class="label is-focus is-secondary"&gt;Status&lt;/span&gt;
-&lt;span class="label is-success is-secondary"&gt;Approved&lt;/span&gt;
-&lt;span class="label is-warning is-secondary"&gt;Pending&lt;/span&gt;
-</pre>
-                </div>
-
-
-                <!-- TERTIARY -->
-                <h2 id="s-tertiary"><a href="#s-tertiary">Tertiary <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <span class="label is-tertiary">Draft</span>&nbsp;
-                        <span class="label is-error is-tertiary">Rejected</span>&nbsp;
-                        <span class="label is-focus is-tertiary">Status</span>&nbsp;
-                        <span class="label is-success is-tertiary">Approved</span>&nbsp;
-                        <span class="label is-warning is-tertiary">Pending</span>&nbsp;
-                    </div>
-                    <pre>&lt;span class="label is-tertiary"&gt;Draft&lt;/span&gt;
-&lt;span class="label is-error is-tertiary"&gt;Rejected&lt;/span&gt;
-&lt;span class="label is-focus is-tertiary"&gt;Status&lt;/span&gt;
-&lt;span class="label is-success is-tertiary"&gt;Approved&lt;/span&gt;
-&lt;span class="label is-warning is-tertiary"&gt;Pending&lt;/span&gt;
-</pre>
-                </div>
-
-                <!-- REMOVABLE -->
-                <h2 id="s-removable"><a href="#s-removable">Removable <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <span class="label">Draft <span class="close"></span></span>&nbsp;
-                        <span class="label is-success is-secondary">Approved <span class="close"></span></span>&nbsp;
-                        <span class="label is-warning is-tertiary">Pending <span class="close"></span></span>&nbsp;
-                    </div>
-                    <pre>&lt;span class="label"&gt;Draft &lt;span class="close"&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="label is-success is-secondary"&gt;Approved &lt;span class="close"&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="label is-warning is-tertiary"&gt;Pending &lt;span class="close"&gt;&lt;/span&gt;&lt;/span&gt;
-</pre>
-                </div>
-
-
-                <!-- HOVERABLE -->
-                <h2 id="s-hoverable"><a href="#s-hoverable">Hoverable <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <a href="#" class="label">Draft</a>&nbsp;
-                        <a href="#" class="label is-error is-secondary">Rejected</a>&nbsp;
-                        <a href="#" class="label is-focus is-tertiary">Status</a>&nbsp;
-                    </div>
-                    <pre>&lt;a href="#" class="label"&gt;Draft&lt;/a&gt;
-&lt;a href="#" class="label is-error is-secondary"&gt;Rejected&lt;/a&gt;
-&lt;a href="#" class="label is-focus is-tertiary"&gt;Status&lt;/a&gt;
-</pre>
-                </div>
-
-
-                <!-- BADGE PRIMARY -->
-                <h2 id="s-badge-primary"><a href="#s-badge-primary">Badge Primary <span>#</span></a></h2>
-
-                <p>
-                    The <code>.is-badge</code> modifier makes the label round.
-                </p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <span class="label is-badge">2</span>&nbsp;
-                        <span class="label is-badge is-error">2</span>&nbsp;
-                        <span class="label is-badge is-focus">2</span>&nbsp;
-                        <span class="label is-badge is-success">2</span>&nbsp;
-                        <span class="label is-badge is-warning">2</span>&nbsp;
-                    </div>
-                    <pre>&lt;span class="label is-badge"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-error"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-focus"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-success"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-warning"&gt;2&lt;/span&gt;
-</pre>
-                </div>
-
-                <!-- BADGE SECONDARY -->
-                <h2 id="s-badge-secondary"><a href="#s-badge-secondary">Badge Secondary <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <span class="label is-badge is-secondary">2</span>&nbsp;
-                        <span class="label is-badge is-error is-secondary">2</span>&nbsp;
-                        <span class="label is-badge is-focus is-secondary">2</span>&nbsp;
-                        <span class="label is-badge is-success is-secondary">2</span>&nbsp;
-                        <span class="label is-badge is-warning is-secondary">2</span>&nbsp;
-                    </div>
-                    <pre>&lt;span class="label is-badge is-secondary"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-error is-secondary"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-focus is-secondary"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-success is-secondary"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-warning is-secondary"&gt;2&lt;/span&gt;
-</pre>
-                </div>
-
-
-                <!-- BADGE TERTIARY -->
-                <h2 id="s-badge-tertiary"><a href="#s-badge-tertiary">Badge Tertiary <span>#</span></a></h2>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <span class="label is-badge is-tertiary">2</span>&nbsp;
-                        <span class="label is-badge is-error is-tertiary">2</span>&nbsp;
-                        <span class="label is-badge is-focus is-tertiary">2</span>&nbsp;
-                        <span class="label is-badge is-success is-tertiary">2</span>&nbsp;
-                        <span class="label is-badge is-warning is-tertiary">2</span>&nbsp;
-                    </div>
-                    <pre>&lt;span class="label is-badge is-tertiary"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-error is-tertiary"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-focus is-tertiary"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-success is-tertiary"&gt;2&lt;/span&gt;
-&lt;span class="label is-badge is-warning is-tertiary"&gt;2&lt;/span&gt;
-</pre>
-                </div>
-
-
-                <!-- CUSTOM -->
-                <h2 id="s-custom"><a href="#s-custom">Custom <span>#</span></a></h2>
-                <p>You can use the mixin <code>make-label</code> to customize your labels and badges.</p>
-
-                <div class="demo-box">
-                    <div class="demo-example">
-                        <span class="label label-custom">Custom</span>&nbsp;
-                        <span class="label label-custom">Custom <span class="close"></span></span>&nbsp;
-                        <span class="label label-custom is-badge">2</span>&nbsp;
-                        <span class="label label-custom is-secondary">Secondary</span>&nbsp;
-                        <span class="label label-custom is-tertiary">Tertiary</span>
-                    </div>
-                    <pre>// scss
-.label.label-custom {
-    @include make-label(#7b2ed7);
-}
-
-// html
-&lt;span class="label label-custom"&gt;Custom&lt;/span&gt;
-&lt;span class="label label-custom is-badge"&gt;2&lt;/span&gt;
-&lt;span class="label label-custom is-secondary"&gt;Secondary&lt;/span&gt;
-&lt;span class="label label-custom is-tertiary"&gt;Tertiary&lt;/span&gt;
-</pre>
-                </div>
-
             </div>
         </div>
-    </main>
-    <footer class="footer">Made with <3 @ Spletna Postaja</footer>
-</div>
+    </section>
+
+    <!-- USE -->
+    <section class="sc-section" id="use">
+        <div class="sc-wrap">
+            <h2>Make it yours</h2>
+            <p>Set your own tokens before importing the library. Every component picks them up.</p>
+            <pre>// your-theme.scss
+$color-button: #7b2ed7;
+$button-default-border-radius: 999px;
+$font-base: 15;
+$sm: 640px;
+
+@import "generic-css/generic";</pre>
+        </div>
+    </section>
+
+</main>
+
+<footer class="sc-footer">
+    <div class="sc-wrap">
+        Generic CSS by <a href="https://github.com/tgomilar">Tanja Gomilar</a>, 2019.
+        Source on <a href="https://github.com/tgomilar/generic-css">GitHub</a>.
+    </div>
+</footer>
+
 </body>
-
 </html>
